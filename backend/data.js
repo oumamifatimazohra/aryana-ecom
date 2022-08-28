@@ -16,7 +16,6 @@ const data = {
     ],
     products:[
         {
-        
          name: 'Mascara',
          category: 'makeup',
          image: '/images/cosmetics-1-1474339.jpg',
@@ -28,7 +27,6 @@ const data = {
          descreption: 'high quality product'
         },
         {
-      
         name: 'Buble Poudre',
         category: 'makeup',
         image: '/images/cosmetic-matting-fluid-3-1558409.jpg',
@@ -40,7 +38,6 @@ const data = {
         descreption: 'high quality product'
         },
         {
-        
         name: 'Lipstick',
         category: 'makeup',
         image: '/images/lipstick-1422492.jpg',
@@ -52,7 +49,6 @@ const data = {
         descreption: 'high quality product'
         },
         {
-        
         name: 'Nail Polish',
         category: 'makeup',
         image: '/images/nail-polish-1555069.jpg',
@@ -64,7 +60,6 @@ const data = {
         descreption: 'high quality product'
         },
         {
-        
         name: 'Eye Shadow',
         category: 'makeup',
         image: '/images/cosmetic-1193616.jpg',
@@ -73,18 +68,6 @@ const data = {
         brand: 'Flormar',
         rating: 5,
         numReviews: 11,
-        descreption: 'high quality product'
-        },
-        {
-        
-        name: 'Mascara',
-        category: 'makeup',
-        image: '/images/cosmetics-1-1474339.jpg',
-        price: 96,
-        countInStock: 10,
-        brand: 'Maybeline',
-        rating: 5,
-        numReviews: 10,
         descreption: 'high quality product'
         }
     ],

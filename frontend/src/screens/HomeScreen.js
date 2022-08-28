@@ -14,7 +14,8 @@ const { loading, error, products} = productList;
   useEffect(() => {
 
     dispatch(listProducts());
-  }, []);
+    console.log(products);
+  }, [dispatch]);
   return (
     <div>
     {loading ? (
@@ -22,12 +23,12 @@ const { loading, error, products} = productList;
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
         ) :(
+          <div>
           <div className="row center">
-          
-          {products.map((product) => (
-            <Product key={product._id} product={product}></Product>
-          ))}
-          
+                  {products && products.length && products?.map((product) => (
+                  <Product key={product._id} product={product}></Product>
+                  ))};
+          </div>
           </div>
         )}
     
