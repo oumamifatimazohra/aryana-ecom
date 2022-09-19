@@ -4,6 +4,8 @@ import { detailsUser, updateUserProfile } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
+import '../index.css';
+
 
 export default function ProfileScreen() {
   const [name, setName] = useState('');
@@ -58,18 +60,36 @@ export default function ProfileScreen() {
       );
     }
   };
+  const h1 ={fontSize: "1.8rem",
+    padding: "1rem 0",};
+  const form ={
+      maxWidth:"60rem",
+      margin: "0 auto",
+    };
+    const formdiv = {
+      display: "flex",
+      flexDirection: "column",
+      margin: "1rem",
+    };
+    const formlabel = {
+      margin: "1rem 0",
+    };
+   const h2= {
+      fontSize: "1.6rem",
+      padding: "1rem 0",
+    };
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>User Profile</h1>
+      <form className="form" style={form} onSubmit={submitHandler}>
+        <div style={formdiv}>
+          <h1 style={h1}>User Profile</h1>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <div>
+          <div style={formdiv}>
             {loadingUpdate && <LoadingBox></LoadingBox>}
             {errorUpdate && (
               <MessageBox variant="danger">{errorUpdate}</MessageBox>
@@ -79,8 +99,8 @@ export default function ProfileScreen() {
                 Profile Updated Successfully
               </MessageBox>
             )}
-            <div>
-              <label htmlFor="name">Name</label>
+            <div style={formdiv}>
+              <label style={formlabel} htmlFor="name">Name</label>
               <input
                 id="name"
                 type="text"
@@ -89,8 +109,8 @@ export default function ProfileScreen() {
                 onChange={(e) => setName(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
+            <div style={formdiv}>
+              <label style={formlabel} htmlFor="email">Email</label>
               <input
                 id="email"
                 type="email"
@@ -99,8 +119,8 @@ export default function ProfileScreen() {
                 onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div style={formdiv}>
+              <label style={formlabel} htmlFor="password">Password</label>
               <input
                 id="password"
                 type="password"
@@ -108,8 +128,8 @@ export default function ProfileScreen() {
                 onChange={(e) => setPassword(e.target.value)}
               ></input>
             </div>
-            <div>
-              <label htmlFor="confirmPassword">confirm Password</label>
+            <div style={formdiv}>
+              <label style={formlabel} htmlFor="confirmPassword">confirm Password</label>
               <input
                 id="confirmPassword"
                 type="password"
@@ -118,10 +138,10 @@ export default function ProfileScreen() {
               ></input>
             </div>
             {user.isSeller && (
-              <div>
-                <h2>Seller</h2>
-                <div>
-                  <label htmlFor="sellerName">Seller Name</label>
+              <div style={formdiv}>
+                <h2 style={h2}>Seller</h2>
+                <div style={formdiv}>
+                  <label style={formlabel} htmlFor="sellerName">Seller Name</label>
                   <input
                     id="sellerName"
                     type="text"
@@ -130,8 +150,8 @@ export default function ProfileScreen() {
                     onChange={(e) => setSellerName(e.target.value)}
                   ></input>
                 </div>
-                <div>
-                  <label htmlFor="sellerLogo">Seller Logo</label>
+                <div style={formdiv}>
+                  <label style={formlabel} htmlFor="sellerLogo">Seller Logo</label>
                   <input
                     id="sellerLogo"
                     type="text"
@@ -140,8 +160,8 @@ export default function ProfileScreen() {
                     onChange={(e) => setSellerLogo(e.target.value)}
                   ></input>
                 </div>
-                <div>
-                  <label htmlFor="sellerDescription">Seller Description</label>
+                <div style={formdiv}>
+                  <label style={formlabel} htmlFor="sellerDescription">Seller Description</label>
                   <input
                     id="sellerDescription"
                     type="text"
@@ -152,7 +172,7 @@ export default function ProfileScreen() {
                 </div>
               </div>
             )}
-            <div>
+            <div style={formdiv}>
               <label />
               <button className="primary" type="submit">
                 Update

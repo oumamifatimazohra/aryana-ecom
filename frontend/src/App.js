@@ -17,18 +17,18 @@ import PrivateRoute from './components/PrivateRoute';
 import ProfileScreen from './screens/ProfileScreen';
 import AdminRoute from './components/AdminRoute';
 import ProductListScreen from './screens/ProductListScreen';
-// import ProductEditScreen from './screens/ProductEditScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
-// import SellerRoute from './components/SellerRoute';
-// import SellerScreen from './screens/SellerScreen';
+import SellerRoute from './components/SellerRoute';
+import SellerScreen from './screens/SellerScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
-// import LoadingBox from './components/LoadingBox';
-// import MessageBox from './components/MessageBox';
-// import MapScreen from './screens/MapScreen';
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
+import MapScreen from './screens/MapScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './components/ChatBox';
@@ -145,11 +145,43 @@ function App() {
             )}
           </div>
     </header>
+    <aside className={sidebarIsOpen ? 'open' : ''}>
+    <ul className="categories">
+      <li>
+        <strong>Categories</strong>
+        <button
+          onClick={() => setSidebarIsOpen(false)}
+          className="close-sidebar"
+          type="button"
+        >
+          <i className="fa fa-close"></i>
+        </button>
+      </li>
+      {loadingCategories ? (
+        <LoadingBox></LoadingBox>
+      ) : errorCategories ? (
+        <MessageBox variant="danger">{errorCategories}</MessageBox>
+      ) : (
+        categories.map((c) => (
+          <li key={c}>
+            <Link
+              to={`/search/category/${c}`}
+              onClick={() => setSidebarIsOpen(false)}
+            >
+              {c}
+            </Link>
+          </li>
+        ))
+      )}
+    </ul>
+  </aside>
     <main>
     <Routes>
+    <Route path="/seller/:id" element={<SellerScreen />} />
     <Route path="/cart" element={<CartScreen />} />
     <Route path="/cart/:id" element={<CartScreen />} />
     <Route  path="/product/:id"  element={<ProductScreen />} exact />
+    <Route path="/product/:id/edit" element={<ProductEditScreen />} exact/>
     <Route path="/signin" element={<SigninScreen />} />
     <Route path="/register" element={<RegisterScreen />} />
     <Route path="/shipping" element={<ShippingAddressScreen />} />
@@ -177,17 +209,13 @@ function App() {
               exact
             />
 
-    <Route path="/profile" element={
-      <PrivateRoute>
-        <ProfileScreen />
-      </PrivateRoute>
-    }
-  />
+    <Route path="/profile" element={<PrivateRoute><ProfileScreen /></PrivateRoute>} />
     <Route path="/order/:id" element={<OrderScreen />} />
     <Route
     path="/orderhistory"
     element={<OrderHistoryScreen />}
   />
+  <Route path="/map" element={<PrivateRoute> <MapScreen /> </PrivateRoute>} />
   <Route
   path="/productlist"
   element={
@@ -244,6 +272,22 @@ function App() {
       <SupportScreen />
     </AdminRoute>
   }
+/>
+<Route
+path="/productlist/seller"
+element={
+  <SellerRoute>
+    <ProductListScreen />
+  </SellerRoute>
+}
+/>
+<Route
+path="/orderlist/seller"
+element={
+  <SellerRoute>
+    <OrderListScreen />
+  </SellerRoute>
+}
 />
     <Route path="/" element={<HomeScreen />} exact />
     </Routes>

@@ -1,9 +1,10 @@
 {
   "name": "frontend",
-  "proxy": "http://localhost:5000/",
+  "proxy": "http://localhost:27017/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-google-maps/api": "^2.12.2",
     "@redux-devtools/extension": "^3.2.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -14,6 +15,7 @@
     "react-google-charts": "^4.0.0",
     "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^8.0.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",

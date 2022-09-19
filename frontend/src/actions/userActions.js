@@ -110,7 +110,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.put(`http://localhost:27017/api/users/${user._id}`, user, {
+    const { data } = await Axios.put(`/localhost:27017/api/users/${user._id}`, user, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
@@ -148,7 +148,7 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.delete(`http://localhost:27017/api/users/${userId}`, {
+    const { data } = await Axios.delete(`/localhost:27017/api/users/${userId}`, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: USER_DELETE_SUCCESS, payload: data });
